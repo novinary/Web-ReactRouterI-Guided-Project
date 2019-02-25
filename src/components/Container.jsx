@@ -49,6 +49,16 @@ export default function Container() {
 
 function withRouteMatching(Component) {
   return class WithRouteMatching extends React.Component {
+    state = { path: location.pathname }
+
+    setPath = () => {
+      this.setState({ path: location.pathname });
+    }
+
+    componentDidMount() {
+      addEventListener('popstate', this.setPath);
+    }
+
     render() {
       const pathsMatch = location.pathname === this.props.path;
       const shouldAlwaysRender = !this.props.path;
