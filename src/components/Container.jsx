@@ -50,7 +50,8 @@ export default function Container() {
 function withRouteMatching(Component) {
   return class WithRouteMatching extends React.Component {
     render() {
-      return <Component />;
+      const pathsMatch = location.pathname === this.props.path;
+      return <Component {...this.props} />;
     }
   };
 }
