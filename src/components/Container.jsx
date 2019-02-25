@@ -1,9 +1,9 @@
 import React from 'react';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Blackjack from '../screens/Blackjack';
-import RockPaperScissors from '../screens/RockPaperScissors';
-import TicTacToe from '../screens/TicTacToe';
+import BlackjackPlain from '../screens/Blackjack';
+import RockPaperScissorsPlain from '../screens/RockPaperScissors';
+import TicTacToePlain from '../screens/TicTacToe';
 import Section from './Section';
 
 
@@ -17,6 +17,10 @@ const StyledContainer = styled.div`
     justify-content: space-between;
   }
 `;
+
+const Blackjack = withRouteMatching(BlackjackPlain);
+const RockPaperScissors = withRouteMatching(RockPaperScissorsPlain);
+const TicTacToe = withRouteMatching(TicTacToePlain);
 
 export default function Container() {
   return (
@@ -41,6 +45,14 @@ export default function Container() {
       />
     </StyledContainer>
   );
+}
+
+function withRouteMatching(Component) {
+  return class WithRouteMatching extends React.Component {
+    render() {
+      return <Component />;
+    }
+  };
 }
 
 class Link extends React.Component {
