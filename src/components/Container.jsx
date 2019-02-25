@@ -12,6 +12,14 @@ const apps = [
   { id: '3', Component: TicTacToe },
 ];
 
+function App(props) {
+  const { Component } = apps.find(
+    app => app.id === props.match.params.id,
+  );
+
+  return <Component {...props} />;
+}
+
 const StyledContainer = styled.div`
   padding: 20px;
   height: 100%;
@@ -38,7 +46,7 @@ export default function Container() {
           <Link to='/contact'>Contact</Link>
         </nav>
 
-        <Route exact path='/app/:id' component={App} />
+        <Route path='/apps/:id' component={App} />
 
         {/* <Blackjack path='/' /> */}
         {/* <Route exact path='/' component={Blackjack} /> */}
