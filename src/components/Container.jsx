@@ -51,7 +51,12 @@ function withRouteMatching(Component) {
   return class WithRouteMatching extends React.Component {
     render() {
       const pathsMatch = location.pathname === this.props.path;
-      return <Component {...this.props} />;
+      const shouldAlwaysRender = !this.props.path;
+
+      if (pathsMatch || shouldAlwaysRender) {
+        return <Component {...this.props} />;
+      }
+      return null;
     }
   };
 }
