@@ -1,9 +1,9 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import BlackjackPlain from '../screens/Blackjack';
-import RockPaperScissorsPlain from '../screens/RockPaperScissors';
-import TicTacToePlain from '../screens/TicTacToe';
+import Blackjack from '../screens/Blackjack';
+import RockPaperScissors from '../screens/RockPaperScissors';
+import TicTacToe from '../screens/TicTacToe';
 import Section from './Section';
 
 
@@ -18,67 +18,70 @@ const StyledContainer = styled.div`
   }
 `;
 
-const Blackjack = withRouteMatching(BlackjackPlain);
-const RockPaperScissors = withRouteMatching(RockPaperScissorsPlain);
-const TicTacToe = withRouteMatching(TicTacToePlain);
+// const Blackjack = withRouteMatching(BlackjackPlain);
+// const RockPaperScissors = withRouteMatching(RockPaperScissorsPlain);
+// const TicTacToe = withRouteMatching(TicTacToePlain);
 
 export default function Container() {
   return (
-    <StyledContainer>
-      <nav>
-        <Link to='/'>Black</Link>
-        <Link to='/rock_paper_scissors'>Rock</Link>
-        <Link to='/tic_tac_toe'>Tic</Link>
-        <Link to='/contact'>Contact</Link>
-      </nav>
+    <Router>
+      <StyledContainer>
+        <nav>
+          <Link to='/'>Black</Link>
+          <Link to='/rock_paper_scissors'>Rock</Link>
+          <Link to='/tic_tac_toe'>Tic</Link>
+          <Link to='/contact'>Contact</Link>
+        </nav>
 
-      <Blackjack path='/' />
+        <Blackjack path='/' />
 
-      <RockPaperScissors path='/rock_paper_scissors' />
+        <RockPaperScissors path='/rock_paper_scissors' />
 
-      <TicTacToe path='/tic_tac_toe' />
+        <TicTacToe path='/tic_tac_toe' />
 
-      <Section
-        color='#d6247a'
-        heading='Contact'
-        content='Contact me always renders.'
-      />
-    </StyledContainer>
+        <Section
+          color='#d6247a'
+          heading='Contact'
+          content='Contact me always renders.'
+        />
+      </StyledContainer>
+    </Router>
   );
 }
 
-function withRouteMatching(Component) {
-  return class WithRouteMatching extends React.Component {
-    state = { path: location.pathname }
+// function withRouteMatching(Component) {
+//   return class WithRouteMatching extends React.Component {
+//     state = { path: location.pathname }
 
-    setPath = () => {
-      this.setState({ path: location.pathname });
-    }
+//     setPath = () => {
+//       this.setState({ path: '' });
+//     }
 
-    componentDidMount() {
-      addEventListener('popstate', this.setPath);
-    }
+//     componentDidMount() {
+//       this.setPath();
+//       addEventListener('popstate', this.setPath);
+//     }
 
-    render() {
-      const pathsMatch = location.pathname === this.props.path;
-      const shouldAlwaysRender = !this.props.path;
+//     render() {
+//       const pathsMatch = location.pathname === this.props.path;
+//       const shouldAlwaysRender = !this.props.path;
 
-      if (pathsMatch || shouldAlwaysRender) {
-        return <Component {...this.props} />;
-      }
-      return null;
-    }
-  };
-}
+//       if (pathsMatch || shouldAlwaysRender) {
+//         return <Component {...this.props} />;
+//       }
+//       return null;
+//     }
+//   };
+// }
 
-class Link extends React.Component {
-  navigateTo = () => {
-    history.pushState(null, null, this.props.to);
-  }
+// class Link extends React.Component {
+//   navigateTo = () => {
+//     history.pushState(null, null, this.props.to);
+//   }
 
-  render() {
-    return (
-      <a onClick={this.navigateTo} href="#">{this.props.children}</a>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <a onClick={this.navigateTo} href="#">{this.props.children}</a>
+//     );
+//   }
+// }
