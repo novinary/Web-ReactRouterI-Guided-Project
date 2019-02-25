@@ -14,7 +14,7 @@ const apps = [
 
 function App(props) {
   const { Component } = apps.find(
-    app => app.id === props.match.params.id,
+    app => app.id === props.match.params.meh,
   );
 
   return <Component {...props} />;
@@ -46,7 +46,7 @@ export default function Container() {
           <Link to='/contact'>Contact</Link>
         </nav>
 
-        <Route path='/apps/:id' component={App} />
+        <Route path='/apps/:meh' component={App} />
 
         {/* <Blackjack path='/' /> */}
         {/* <Route exact path='/' component={Blackjack} /> */}
