@@ -37,10 +37,10 @@ export default function Container() {
         <Route exact path='/' component={Blackjack} />
 
         {/* <RockPaperScissors path='/rock_paper_scissors' /> */}
-        <Route exact path='/rock_paper_scissors' component={RockPaperScissors} />
+        <Route path='/rock_paper_scissors' component={RockPaperScissors} />
 
         {/* <TicTacToe path='/tic_tac_toe' /> */}
-        <Route exact path='/tic_tac_toe' component={TicTacToe} />
+        <Route path='/tic_tac_toe' component={TicTacToe} />
 
         <Section
           color='#d6247a'
