@@ -33,11 +33,14 @@ export default function Container() {
           <Link to='/contact'>Contact</Link>
         </nav>
 
-        <Blackjack path='/' />
+        {/* <Blackjack path='/' /> */}
+        <Route exact path='/' component={Blackjack} />
 
-        <RockPaperScissors path='/rock_paper_scissors' />
+        {/* <RockPaperScissors path='/rock_paper_scissors' /> */}
+        <Route exact path='/rock_paper_scissors' component={RockPaperScissors} />
 
-        <TicTacToe path='/tic_tac_toe' />
+        {/* <TicTacToe path='/tic_tac_toe' /> */}
+        <Route exact path='/tic_tac_toe' component={TicTacToe} />
 
         <Section
           color='#d6247a'
