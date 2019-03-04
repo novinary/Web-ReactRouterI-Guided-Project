@@ -22,17 +22,17 @@ export default function Container() {
   return (
     <StyledContainer>
       <nav>
-        <a href='#'>Black</a>
-        <a href='#'>Rock</a>
-        <a href='#'>Tic</a>
-        <a href='#'>Contact</a>
+        <Link to='/'>Black</Link>
+        <Link to='/rock_paper_scissors'>Rock</Link>
+        <Link to='/tic_tac_toe'>Tic</Link>
+        <Link to='/contact'>Contact</Link>
       </nav>
 
-      <Blackjack />
+      <Blackjack path='/' />
 
-      <RockPaperScissors />
+      <RockPaperScissors path='/rock_paper_scissors' />
 
-      <TicTacToe />
+      <TicTacToe path='tic_tac_toe' />
 
       <Section
         color='#d6247a'
@@ -41,4 +41,15 @@ export default function Container() {
       />
     </StyledContainer>
   );
+}
+
+class Link extends React.Component {
+  navigateTo = () => {
+    history.pushState(null, null, this.props.to);
+  }
+  render() {
+    return (
+      <a onClick={this.navigateTo} href="#">{this.props.children}</a>
+    )
+  }
 }
