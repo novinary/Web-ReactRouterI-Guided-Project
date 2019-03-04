@@ -1,9 +1,9 @@
 import React from 'react';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Blackjack from '../screens/Blackjack';
-import RockPaperScissors from '../screens/RockPaperScissors';
-import TicTacToe from '../screens/TicTacToe';
+import BlackjackPlain from '../screens/Blackjack';
+import RockPaperScissorsPlain from '../screens/RockPaperScissors';
+import TicTacToePlain from '../screens/TicTacToe';
 import Section from './Section';
 
 
@@ -17,6 +17,11 @@ const StyledContainer = styled.div`
     justify-content: space-between;
   }
 `;
+
+// plugging in extra magic here with HOC
+const Blackjack = withRouteMatching(BlackjackPlain);
+const RockPaperScissors = withRouteMatching(RockPaperScissorsPlain);
+const TicTacToe = withRouteMatching(TicTacToePlain);
 
 export default function Container() {
   return (
@@ -43,13 +48,25 @@ export default function Container() {
   );
 }
 
+// using HOC here
+// takes a component
+function withRouteMatching(Component) {
+  return class WithRouteMatching extends React.Component {
+    render() {
+      return <div>hey</div>
+    }
+  };
+}
+
+// link component
 class Link extends React.Component {
   navigateTo = () => {
     history.pushState(null, null, this.props.to);
   }
+
   render() {
     return (
       <a onClick={this.navigateTo} href="#">{this.props.children}</a>
-    )
+    );
   }
 }
