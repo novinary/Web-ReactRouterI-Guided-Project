@@ -26,26 +26,26 @@ const StyledContainer = styled.div`
 export default function Container() {
   return (
     <Router>
-    <StyledContainer>
-      <nav>
-        <Link to='/'>Black</Link>
-        <Link to='/rock_paper_scissors'>Rock</Link>
-        <Link to='/tic_tac_toe'>Tic</Link>
-        <Link to='/contact'>Contact</Link>
-      </nav>
+      <StyledContainer>
+        <nav>
+          <Link to='/'>Black</Link>
+          <Link to='/rock_paper_scissors'>Rock</Link>
+          <Link to='/tic_tac_toe'>Tic</Link>
+          <Link to='/contact'>Contact</Link>
+        </nav>
 
-    {  /* <Blackjack path='/' /> */ }
+        {  /* <Blackjack path='/' /> */}
 
-      <Route exact path ='/' component={Blackjack} />
-      <Route exact path ='/rock_paper_scissors' component={RockPaperScissor} />
-      <Route exact path ='/tic_tac_toe' component={TicTacToe} />
+        <Route exact path='/' component={Blackjack} />
+        <Route path='/rock_paper_scissors' component={RockPaperScissors} />
+        <Route path='/tic_tac_toe' component={TicTacToe} />
 
-      <Section
-        color='#d6247a'
-        heading='Contact'
-        content='Contact me always renders.'
-      />
-    </StyledContainer>
+        <Section
+          color='#d6247a'
+          heading='Contact'
+          content='Contact me always renders.'
+        />
+      </StyledContainer>
     </Router>
   );
 }

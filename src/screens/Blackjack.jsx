@@ -2,7 +2,8 @@ import React from 'react';
 import Section from '../components/Section';
 
 
-export default function Blackjack() {
+export default function Blackjack(props) {
+  console.log(props)
   return (
     <Section
       path='/'
