@@ -6,6 +6,13 @@ import RockPaperScissors from '../screens/RockPaperScissors';
 import TicTacToe from '../screens/TicTacToe';
 import Section from './Section';
 
+// list of apps
+// now we have association between components and id
+const apps = [
+  { id: '1', Component: Blackjack },
+  { id: '2', Component: RockPaperScissors },
+  { id: '3', Component: TicTacToe },
+];
 
 const StyledContainer = styled.div`
   padding: 20px;
@@ -36,6 +43,8 @@ export default function Container() {
         </nav>
 
         {  /* <Blackjack path='/' /> */}
+
+        <Route path='/apps/:id' component={App} />
 
         <Section
           color='#d6247a'
