@@ -37,7 +37,7 @@ export default function Container() {
 
       <RockPaperScissors path='/rock_paper_scissors' />
 
-      <TicTacToe path='tic_tac_toe' />
+      <TicTacToe path='/tic_tac_toe' />
 
       <Section
         color='#d6247a'
@@ -52,11 +52,27 @@ export default function Container() {
 // takes a component
 function withRouteMatching(Component) {
   return class WithRouteMatching extends React.Component {
+    // here we are tracking the segment of url
+    // so i'm initialising path to be the true location (location.pathname)
+    // saving the state
+    state = { path: location.pathname }
+
+    // here i'm writing a method to update with current path
+    setPath = () => {
+      this.setState({ path: location.pathname });
+    }
+    
+    //event listener
+    componentDidMount() {
+      this.setPath();
+      addEventListener('popstate', this.setPath);
+    }
+
     render() {
       // here i'm comparing actual url in the browser against props.path
       // path should match is the actual url matches with the prop path injected
       const pathsMatch = location.pathname === this.props.path;
-      // if this.props.path is not there it should render 
+      // if this.props.path is not there it should render  
       const shouldAlwaysRender = !this.props.path;
 
       // if pathsMatch or shouldAlwaysRender return component
