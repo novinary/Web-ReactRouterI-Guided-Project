@@ -53,7 +53,19 @@ export default function Container() {
 function withRouteMatching(Component) {
   return class WithRouteMatching extends React.Component {
     render() {
-      return <div>hey</div>
+      // here i'm comparing actual url in the browser against props.path
+      // path should match is the actual url matches with the prop path injected
+      const pathsMatch = location.pathname === this.props.path;
+      // if this.props.path is not there it should render 
+      const shouldAlwaysRender = !this.props.path;
+
+      // if pathsMatch or shouldAlwaysRender return component
+      if (pathsMatch || shouldAlwaysRender) {
+        // here i'm using spread operator to pass all prop along
+        return <Component {...this.props} />;
+      }
+      // otherwise return something renderabl to eliminate error
+      return null;
     }
   };
 }
