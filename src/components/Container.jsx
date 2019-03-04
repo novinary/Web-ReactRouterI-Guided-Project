@@ -14,6 +14,15 @@ const apps = [
   { id: '3', Component: TicTacToe },
 ];
 
+function App(props) {
+  const { Component } = apps.find(
+    app => app.id === props.match.params.id,   // get id from object called params
+  );
+
+  return <Component {...props} />;
+}
+
+
 const StyledContainer = styled.div`
   padding: 20px;
   height: 100%;
